@@ -4,6 +4,7 @@ const login = new LoginObject();
 
   describe("LoginScreen", function () {
     it("Login", function(){
+      cy.wait('@user')
         cy.doLogin();  
       
     });

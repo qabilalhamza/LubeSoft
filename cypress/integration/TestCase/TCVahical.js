@@ -6,19 +6,14 @@ const vahical = new VahicalObject();
 
 beforeEach(() => {
   Cypress.Cookies.preserveOnce( '.AspNetCore.Antiforgery.FnG08HaJ2wY', '.AspNetCore.Identity.Application');
-
-  cy.intercept('*/work-orders/*/send-to-cashier').as('workOrder')
-  cy.intercept('**/users/current').as('user')
-  cy.intercept('**/payments/cash/modal').as('modal')
- 
   cy.intercept('**/cashier/start-invoice').as('invoice')
-
   cy.intercept('**/cashier/invoice-preview/details/payments').as('cash')
   cy.intercept('**/comments').as('comment')
 });
 
 describe("LoginScreen", function () {
   before("Login", function(){
+    
     cy.doLogin();
     
 });
@@ -48,7 +43,7 @@ describe("LoginScreen", function () {
            cy.wait(1000)
            cy.get("#message-modal-close-btn").should('be.visible').click({force:true});
            cy.contains('Record Current Odometer').should('be.visible')
-           cy.get(vahical.fieldToday).type('5000')
+           cy.get(vahical.fieldToday).type('5500')
            cy.get(vahical.btnSave).click()
     
             })
@@ -76,20 +71,9 @@ describe("LoginScreen", function () {
               })
     }) 
            
-       
-    it("ISI screen", function () {
-
-      
-      
-
-
-
-})       
-            
-             
-
-            })
-          
+  }) 
+        
+        
 
 
 
