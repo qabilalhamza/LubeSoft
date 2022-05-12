@@ -25,6 +25,7 @@ class VahicalObject{
     btnSubmit = '#addCashSubmitButton'
     btnFinalize = '#finalizeButton'
     fieldCash= '#cashInput'
+    commentHeading = '#e10d3f434b8250e4ba64646e23c58720815d2c634f8dcc1b6d26ef2cc273c4b06078Label'
     Search(){
         
         for(let i=0 ; i<=1; i++){
@@ -55,18 +56,22 @@ class VahicalObject{
          .clear()
           .type('P@ssword1')
            cy.get(this.btnOk).click()
-   // return this
+   
 }
 
 cashPayment(){
-    cy.get('#couponButton').should('be.visible')  
+    cy.get('#couponButton').should('be.visible') 
+    cy.wait(2000)    
     cy.get(this.btnCash).click({force:true})
-           
-     cy.get('#balanceDue').then(($btn)=> {
-     const txt = $btn.text()
-     cy.get(this.fieldCash).clear().should('exist').type(txt)
-     cy.get(this.btnSubmit).click()
-    })
+   
+        cy.get('#balanceDue').then(($btn)=> {
+            const txt = $btn.text()
+            cy.wait(500)
+            cy.get(this.fieldCash).clear().should('exist').type(txt)
+            cy.get(this.btnSubmit).click()
+           })
+    
+  
      cy.contains('Change Due').should('be.visible')
      cy.get(this.btnFinalize).click({force: true})
      cy.get('#openDrawerButton').click()
@@ -89,10 +94,5 @@ finalize(){
 
 
   }
-  currentuRl(){
-    const currentURL = 'http://lubesoft-652083273.us-west-2.elb.amazonaws.com/work-orders/**'.split('/')
-    const id = currentURL[4]
-  cy.log(id)
-}
         }
 export default VahicalObject

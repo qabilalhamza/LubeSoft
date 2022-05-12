@@ -16,7 +16,18 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
+
+
+
+let workOrderId;
+
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
+  on('task', {
+    setWorkOrderId: (val) => {
+      return (workOrderId = val)
+    },
+    getWorkOrderId: () => {
+      return workOrderId
+    },
+  })
 }
