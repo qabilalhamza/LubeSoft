@@ -1,0 +1,98 @@
+class VahicalObject{
+
+    liscence = '6x87895'
+    searchField = '#searchBox'
+    result = '.row-link > :nth-child(1)'
+    startWork = '#startWorkOrderNavLink'
+    customerName = '.row-link > :nth-child(1)'
+    itemSearch = '#item-search-box'
+    fs1 = 'tbody > tr > :nth-child(2)'
+    wph = "part-number-afc9004f-f69e-4254-ae61-ffacbbdef6c0"
+    wphclick = '.table > tbody > tr > :nth-child(1)'
+    message = '#message'
+    btnClose = 'Close'
+    sendToCashier = '#sendToCashierNavLink'
+    fieldToday = '#record-odometer-input'
+    btnSave = '#record-odometer-save'
+    btnHome = '.nav-item > .nav-link'
+    cashierInvoice = '#cashierInvoiceNavLink'
+    btnOk= '#identify-modal-save'
+    btnNext = '#nextLink'
+    btnCheck= '#checkPaymentButton'
+    btnCash = '#cashPaymentButton'
+    btnCreditCard = '#creditCardPaymentButton'
+    chckNo = '#checkNumber'
+    btnSubmit = '#addCashSubmitButton'
+    btnFinalize = '#finalizeButton'
+    fieldCash= '#cashInput'
+    Search(){
+        
+        for(let i=0 ; i<=1; i++){
+            if(i==0){
+            cy.get('.row-delete .required-asterisk').siblings('.form-control').eq(i).type('WPH47{Enter}',{force:true}).click()
+           
+            
+            cy.get('.required-item-search-results .table-striped>tbody>tr:nth-of-type(odd)').click({ multiple: false })
+        }
+            else if(i==1){
+            cy.get('.row-delete .required-asterisk').siblings('.form-control').eq(i).clear({force:true}).type('5/20{Enter}',{force:true}).click()
+            cy.get('.required-item-search-results .table-striped>tbody>tr:nth-of-type(odd)').click({ multiple: false })
+        }
+    }
+    }
+
+    quantity(){
+        var num=4
+        for(var x=0;x<4;x++)
+        {
+            
+            cy.get('.row-delete .form-control.text-end').eq(x).type(num,{force:true})
+            num++
+    }
+}
+    enterPassword() {
+         cy.get('#password')
+         .clear()
+          .type('P@ssword1')
+           cy.get(this.btnOk).click()
+   // return this
+}
+
+cashPayment(){
+    cy.get('#couponButton').should('be.visible')  
+    cy.get(this.btnCash).click({force:true})
+           
+     cy.get('#balanceDue').then(($btn)=> {
+     const txt = $btn.text()
+     cy.get(this.fieldCash).clear().should('exist').type(txt)
+     cy.get(this.btnSubmit).click()
+    })
+     cy.contains('Change Due').should('be.visible')
+     cy.get(this.btnFinalize).click({force: true})
+     cy.get('#openDrawerButton').click()
+     cy.contains('The cash drawer was not detected.').should('be.visible')
+     cy.get('#drawerNotFoundOkButton').click()
+     cy.get('#printingInProgressOkButton').click()
+}
+
+
+finalize(){
+    cy.get('#balanceDue').then(($btn)=> {
+        const txt = $btn.text()
+        cy.get(this.fieldCash).clear().should('exist').type(txt)
+        cy.get(this.btnSubmit).click()
+        cy.get(this.btnFinalize).click({force: true})
+       
+      })
+
+      
+
+
+  }
+  currentuRl(){
+    const currentURL = 'http://lubesoft-652083273.us-west-2.elb.amazonaws.com/work-orders/**'.split('/')
+    const id = currentURL[4]
+  cy.log(id)
+}
+        }
+export default VahicalObject
