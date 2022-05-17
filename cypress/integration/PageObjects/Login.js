@@ -18,16 +18,16 @@ class LoginObject {
         btnLogin();
     }
 
-    EnterValidUserName(username) {
+    enterValidUserName(username) {
         //cy.get('#UserName').clear();
         cy.get('#UserName').type(username);
         return this;
     }
 
-    enterPassword(pswd) {
+    enterPassword(pwd) {
         cy.get('#Password')
             .clear()
-            .type(pswd);
+            .type(pwd);
         return this;
     };
 
