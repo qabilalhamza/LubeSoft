@@ -24,10 +24,10 @@ class LoginObject {
         return this;
     }
 
-    enterPassword(pwd) {
+    enterPassword(password) {
         cy.get('#Password')
             .clear()
-            .type(pwd);
+            .type(password);
         return this;
     };
 
