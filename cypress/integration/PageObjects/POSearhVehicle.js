@@ -10,7 +10,7 @@ class VehicleObject {
     fieldToday = '#record-odometer-input';
     btnSave = '#record-odometer-save';
     btnCloseComment = '#cancelCommentModalButton';
-    btnHomeNav = '.nav-item > .nav-link';
+    HomeNav = '.nav-item > .nav-link';
     cashierInvoiceNav = '#cashierInvoiceNavLink';
     btnOk = '#identify-modal-save'
     btnNext = '#nextLink';
@@ -19,6 +19,9 @@ class VehicleObject {
     btnSubmit = '#addCashSubmitButton';
     btnFinalize = '#finalizeButton';
     fieldCash = '#cashInput';
+    openDrawer ='#openDrawerButton'
+    btnOKInProgress = '#printingInProgressOkButton'
+    btnOkDrawer = '#drawerNotFoundOkButton'
     commentHeading = '#e10d3f434b8250e4ba64646e23c58720815d2c634f8dcc1b6d26ef2cc273c4b06078Label';
 
 
@@ -89,10 +92,10 @@ class VehicleObject {
         cy.get(this.btnFinalize).click({
             force: true
         });
-        cy.get('#openDrawerButton').click();
+        cy.get(this.openDrawer).click();
         cy.contains('The cash drawer was not detected.').should('be.visible');
-        cy.get('#drawerNotFoundOkButton').click();
-        cy.get('#printingInProgressOkButton').click();
+        cy.get(this.btnOkDrawer).click();
+        cy.get(this.btnOKInProgress).click();
     }
 
 

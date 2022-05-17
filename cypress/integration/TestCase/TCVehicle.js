@@ -47,7 +47,7 @@ describe("Login with valid Credentials", function() {
 
     it("Cashier Invoice", function() {
         cy.contains('Search Vehicle').should('be.visible');
-        cy.get(vehicle.btnHomeNav).click();
+        cy.get(vehicle.HomeNav).click();
         cy.contains('LubeSoft Home').should('be.visible');
         cy.get(vehicle.cashierInvoiceNav).click();
         vehicle.recentlyCreatedWorkOrder();
