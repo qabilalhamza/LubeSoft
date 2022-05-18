@@ -1,4 +1,4 @@
-import LoginObject from "../PageObjects/Login"
+import LoginObject from "../PageObjects/PageObjectLogin"
 
 const login = new LoginObject();
 

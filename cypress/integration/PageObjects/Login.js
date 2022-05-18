@@ -19,7 +19,6 @@ class LoginObject {
     }
 
     enterValidUserName(username) {
-        //cy.get('#UserName').clear();
         cy.get('#UserName').type(username);
         return this;
     }
