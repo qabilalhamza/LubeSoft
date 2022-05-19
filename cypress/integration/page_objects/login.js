@@ -36,4 +36,4 @@ class LoginObject {
     };
 };
 
-export default LoginObject
+export default LoginObject;
