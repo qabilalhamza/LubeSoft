@@ -3,26 +3,24 @@ class VehicleObject {
     vehicleSearchBox = '#searchBox';
     vehicleSearchResult = '.row-link > :nth-child(1)';
     inventorySearchBox = '#item-search-box';
-    firstSearchResult = '#item-search-results tbody>tr';
+    inventorySearchResult = '#item-search-results tbody>tr';
     validationMessagePopup = '#message';
-    messageBtnClose = '#message-modal-close-btn';
+    btnClosemessage = '#message-modal-close-btn';
     sendToCashierNav = '#sendToCashierNavLink';
-    recordOdometerInputField = '#record-odometer-input';
-    recodometerBtnSave = '#record-odometer-save';
-    commentBtnClose = '#cancelCommentModalButton';
+    txtRecordOdometer = '#record-odometer-input';
+    btnSaveRecordOdometer = '#record-odometer-save';
+    btnCloseComment = '#cancelCommentModalButton';
     HomeNav = '.nav-item > .nav-link';
     cashierInvoiceNav = '#cashierInvoiceNavLink';
-    btnOk = '#identify-modal-save'
+    btnOkPassword = '#identify-modal-save'
     btnNextLink = '#nextLink';
-    btnCheck = '#checkPaymentButton';
-    btnCash = '#cashPaymentButton';
-    btnSubmit = '#addCashSubmitButton';
+    btnCashPayment = '#cashPaymentButton';
+    btnSubmitCash = '#addCashSubmitButton';
     btnFinalize = '#finalizeButton';
-    fieldCash = '#cashInput';
-    openDrawer ='#openDrawerButton'
-    btnOKInProgress = '#printingInProgressOkButton'
-    btnOkDrawer = '#drawerNotFoundOkButton'
-    commentHeading = '#e10d3f434b8250e4ba64646e23c58720815d2c634f8dcc1b6d26ef2cc273c4b06078Label';
+    inputCash = '#cashInput';
+    openDrawer ='#openDrawerButton';
+    btnOKInProgress = '#printingInProgressOkButton';
+    btnOkDrawer = '#drawerNotFoundOkButton';
 
 
     enterPassword() {
@@ -30,13 +28,13 @@ class VehicleObject {
         cy.get('#password')
             .clear()
             .type('P@ssword1');
-        cy.get(this.btnOk).click();
+        cy.get(this.btnOkPassword).click();
     }
 
     clickCashPayment() {
         cy.get('#couponButton').should('be.visible')
         cy.wait(2000);
-        cy.get(this.btnCash).click({
+        cy.get(this.btnCashPayment).click({
             force: true
         });
     }
@@ -44,10 +42,11 @@ class VehicleObject {
         cy.get('#balanceDue').then(($btn) => {
             const txt = $btn.text();
             cy.wait(500);
-            cy.get(this.fieldCash).clear().should('exist').type(txt);
-            cy.get(this.btnSubmit).click();
+            cy.get(this.inputCash).clear().should('exist').type(txt);
+            cy.get(this.btnSubmitCash).click();
         });
     }
+    
     finalizePayment(){
         cy.contains('Change Due').should('be.visible');
         cy.get(this.btnFinalize).click({
