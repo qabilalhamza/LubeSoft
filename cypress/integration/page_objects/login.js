@@ -1,4 +1,4 @@
-class LoginObject {
+class Login {
 
     userName = '#UserName';
     password = '#Password';
@@ -11,18 +11,18 @@ class LoginObject {
     navigate() {
         cy.visit(url);
         cy.contains('Sign in to LubeSoft').should('be.visible');
-    }
+    };
     
     doLogin(email, password) {
         EnterValidUserName(email);
         enterPassword(password);
         btnLogin();
-    }
+    };
 
     enterValidUserName(username) {
         cy.get('#UserName').type(username);
         return this;
-    }
+    };
 
     enterPassword(password) {
         cy.get('#Password')
@@ -36,4 +36,4 @@ class LoginObject {
     };
 };
 
-export default LoginObject;
+export default Login;

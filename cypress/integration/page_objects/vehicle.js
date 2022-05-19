@@ -1,25 +1,25 @@
-class VehicleObject {
+class Vehicle{
 
-    vehicleSearchBox = '#searchBox';
+    txtVehicleSearchBox = '#searchBox';
     vehicleSearchResult = '.row-link > :nth-child(1)';
-    inventorySearchBox = '#item-search-box';
+    txtInventorySearchBox = '#item-search-box';
     inventorySearchResult = '#item-search-results tbody>tr';
     validationMessagePopup = '#message';
-    btnClosemessage = '#message-modal-close-btn';
-    sendToCashierNav = '#sendToCashierNavLink';
+    btnCloseMessage = '#message-modal-close-btn';
+    navSendToCashier = '#sendToCashierNavLink';
     txtRecordOdometer = '#record-odometer-input';
     btnSaveRecordOdometer = '#record-odometer-save';
     btnCloseComment = '#cancelCommentModalButton';
-    HomeNav = '.nav-item > .nav-link';
-    cashierInvoiceNav = '#cashierInvoiceNavLink';
+    navHome = '.nav-item > .nav-link';
+    navCashierInvoice = '#cashierInvoiceNavLink';
     btnOkPassword = '#identify-modal-save'
     btnNextLink = '#nextLink';
     btnCashPayment = '#cashPaymentButton';
     btnSubmitCash = '#addCashSubmitButton';
     btnFinalize = '#finalizeButton';
-    inputCash = '#cashInput';
+    txtCash = '#cashInput';
     openDrawer ='#openDrawerButton';
-    btnOKInProgress = '#printingInProgressOkButton';
+    btnOkInProgress = '#printingInProgressOkButton';
     btnOkDrawer = '#drawerNotFoundOkButton';
 
 
@@ -42,7 +42,7 @@ class VehicleObject {
         cy.get('#balanceDue').then(($btn) => {
             const txt = $btn.text();
             cy.wait(500);
-            cy.get(this.inputCash).clear().should('exist').type(txt);
+            cy.get(this.txtCash).clear().should('exist').type(txt);
             cy.get(this.btnSubmitCash).click();
         });
     }
@@ -56,7 +56,7 @@ class VehicleObject {
         cy.get(this.openDrawer).click();
         cy.contains('The cash drawer was not detected.').should('be.visible');
         cy.get(this.btnOkDrawer).click();
-        cy.get(this.btnOKInProgress).click();
+        cy.get(this.btnOkInProgress).click();
     }
 
     saveWorkOrderId() {
@@ -79,4 +79,4 @@ class VehicleObject {
 
 }
 
-export default VehicleObject;
+export default Vehicle;

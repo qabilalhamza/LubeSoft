@@ -1,6 +1,6 @@
-import LoginObject from "../page_objects/login"
+import Login from "../page_objects/login"
 
-const login = new LoginObject();
+const objLogin = new Login();
 
 describe("LoginScreen", function() {
     it("Login", function() {
